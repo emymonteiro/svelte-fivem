@@ -10,7 +10,7 @@
 		/* { id: 1, name: "Espada de aço", img: "espada_aço.webp", progress: 50 },
 		{ id: 2, name: "Espada de aço", img: "espada_aço.webp" },
 		{ id: 3, name: "Espada de aço", img: "espada_aço.webp" }, */
-		/* { id: 1, name: "Espada de aço", img: "espada_aço.webp", progress: 50 },
+		{ id: 1, name: "Espada de aço", img: "espada_aço.webp", progress: 50 },
 		{
 			id: 2,
 			name: "Escudo de madeira",
@@ -33,7 +33,7 @@
 		{ id: 17, name: "Arco longo", img: "espada_aço.webp" },
 		{ id: 18, name: "Arco longo", img: "espada_aço.webp" },
 		{ id: 19, name: "Arco longo", img: "espada_aço.webp" },
-		{ id: 20, name: "Arco longo", img: "espada_aço.webp" }, */
+		{ id: 20, name: "Arco longo", img: "espada_aço.webp" },
 	];
 </script>
 
