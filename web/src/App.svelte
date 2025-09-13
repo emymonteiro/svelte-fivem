@@ -1,20 +1,19 @@
 <script lang="ts">
 	import VisibilityProvider from "$lib/providers/VisibilityProvider.svelte";
+	import MainCrafting from "./components/crafting/Index.svelte";
 </script>
 
 <VisibilityProvider>
-	<main data-theme="coffee">
-		<h1 class="text-3xl font-bold underline">
-			Main template with tailwind and daisyUI
-		</h1>
+	<main
+		data-theme="coffee"
+		class="w-full items-center justify-center flex bg-transparent"
+	>
+		<MainCrafting />
 	</main>
 </VisibilityProvider>
 
 <style>
 	main {
 		height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 </style>
