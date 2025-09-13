@@ -1,6 +1,6 @@
-<main class="navbar bg-base-200 shadow-sm">
+<main class="navbar bg-base-200 shadow-sm border-b-2 border-secondary">
 	<div class="navbar-start">
-		<div class="dropdown">
+		<!-- <div class="dropdown">
 			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -30,16 +30,31 @@
 				</li>
 				<li><a>Item 3</a></li>
 			</ul>
-		</div>
+		</div> -->
 
-		<a
-			class="btn btn-ghost text-xl text-secondary text-shadow-lg text-shadow-secondary/50"
-			>Eclipse</a
-		>
+		<a class="btn btn-ghost text-xl text-secondary">
+			<img
+				class="h-12 mr-2 drop-shadow-md drop-shadow-highlight"
+				src="eclipse_logo.png"
+				alt="Logo"
+			/>
+		</a>
 	</div>
-	<div class="navbar-center hidden lg:flex">
+	<div class="navbar-center lg:flex">
+		<!-- hidden -->
 		<ul class="menu menu-horizontal px-1">
-			<li><a>Item 1</a></li>
+			<div class="flex flex-row gap-3">
+				<span
+					class="font-extrabold text-md opacity-60 tracking-wide text-white"
+				>
+					Bancada de trabalho
+				</span>
+				<span class="text-light font-thin text-sm opacity-60 italic">
+					- Ferreiro -
+				</span>
+				<span class="text-primary-content"> [ Tier 3 ] </span>
+			</div>
+			<!-- <li><a>Item 1</a></li>
 			<li>
 				<details>
 					<summary>Parent</summary>
@@ -49,10 +64,10 @@
 					</ul>
 				</details>
 			</li>
-			<li><a>Item 3</a></li>
+			<li><a>Item 3</a></li> -->
 		</ul>
 	</div>
 	<div class="navbar-end">
-		<a class="btn">Button</a>
+		<!-- <a class="btn">Button</a> -->
 	</div>
 </main>

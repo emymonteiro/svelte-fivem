@@ -352,109 +352,121 @@
 
 <main class="flex flex-col max-w-sm h-full p-8 pr-0 overflow-hidden">
 	<div class="flex flex-row w-full h-full overflow-y-auto gap-4 relative">
-		<ul class="menu max-w-28 p-0 sticky top-0">
-			{#each categories as category}
-				<li>
-					<div class="tooltip tooltip-bottom">
-						<div class="tooltip-content">
-							<div
-								class="animate-bounce text-secondary text-[0.5rem] font-black"
-							>
-								{categoriesDetails[category]?.label}
+		{#if recipes?.length == 0}
+			<div
+				class="text-lg italic opacity-60 flex items-center gap-2 font-bold"
+			>
+				<span class="loading loading-bars loading-lg"></span>
+				<span> Carregando </span>
+				<span class="loading loading-bars loading-lg"></span>
+			</div>
+		{:else}
+			<ul class="menu max-w-28 p-0 sticky top-0">
+				{#each categories as category}
+					<li>
+						<div class="tooltip tooltip-bottom">
+							<div class="tooltip-content">
+								<div
+									class="animate-bounce text-secondary text-[0.5rem] font-black"
+								>
+									{categoriesDetails[category]?.label}
+								</div>
 							</div>
-						</div>
-						<button
-							onclick={() => filterByCategory(category)}
-							aria-pressed={$selectedCategory === category}
-							class={`flex items-center justify-center w-full h-full cursor-pointer hover:text-neutral-content`}
-						>
-							<div
-								class={`flex items-center gap-2 text-neutral-content ${$selectedCategory === category ? " drop-shadow-md drop-shadow-highlight" : ""}`}
+							<button
+								onclick={() => filterByCategory(category)}
+								aria-pressed={$selectedCategory === category}
+								class={`flex items-center justify-center w-full h-full cursor-pointer hover:text-neutral-content`}
 							>
-								{recipes.filter((r) => r.category === category)
-									.length}
+								<div
+									class={`flex items-center gap-2 text-neutral-content ${$selectedCategory === category ? " drop-shadow-md drop-shadow-highlight" : ""}`}
+								>
+									{recipes.filter(
+										(r) => r.category === category,
+									).length}
+									<Icon
+										class="drop-shadow-2xl drop-shadow-highlight"
+										icon={categoriesDetails[category]?.icon}
+									/>
+								</div>
+							</button>
+						</div>
+					</li>
+				{/each}
+			</ul>
+			<div class="w-xl max-w-[calc(100%-6rem)] flex flex-col">
+				{#each categories as category}
+					{#if !$selectedCategory || $selectedCategory === category}
+						<div
+							transition:slide
+							class="flex flex-col min-w-full w-full gap-2 pb-2"
+						>
+							<button
+								class="flex min-w-full w-full items-center gap-2 text-xs text-neutral-content py-2 cursor-pointer hover:text-light"
+								onclick={() => toggleCategory(category)}
+							>
 								<Icon
-									class="drop-shadow-2xl drop-shadow-highlight"
+									class="w-4 h-4"
 									icon={categoriesDetails[category]?.icon}
 								/>
-							</div>
-						</button>
-					</div>
-				</li>
-			{/each}
-		</ul>
-		<div class="w-xl max-w-[calc(100%-6rem)] flex flex-col">
-			{#each categories as category}
-				{#if !$selectedCategory || $selectedCategory === category}
-					<div
-						transition:slide
-						class="flex flex-col min-w-full w-full gap-2 pb-2"
-					>
-						<button
-							class="flex min-w-full w-full items-center gap-2 text-xs text-neutral-content py-2 cursor-pointer hover:text-light"
-							onclick={() => toggleCategory(category)}
-						>
-							<Icon
-								class="w-4 h-4"
-								icon={categoriesDetails[category]?.icon}
-							/>
-							{categoriesDetails[category]?.label}
-						</button>
-						<ul class="flex flex-col gap-1 w-full">
-							{#if $expandedCategories[category]}
-								<div
-									transition:slide
-									class="flex flex-col gap-1"
-								>
-									{#each recipes.filter((r) => r.category === category) as recipe}
-										<button
-											class="text-sm border-l-2 bg-primary/60 cursor-pointer hover:bg-primary/80 border-primary hover:border-secondary rounded-r-md w-full"
-										>
-											<li
-												class="flex w-full items-center gap-2 px-3 py-1 justify-between"
+								{categoriesDetails[category]?.label}
+							</button>
+							<ul class="flex flex-col gap-1 w-full">
+								{#if $expandedCategories[category]}
+									<div
+										transition:slide
+										class="flex flex-col gap-1"
+									>
+										{#each recipes.filter((r) => r.category === category) as recipe}
+											<button
+												class="text-sm border-l-2 bg-primary/60 cursor-pointer hover:bg-primary/80 border-primary hover:border-secondary rounded-r-md w-full"
 											>
-												<div
-													class="flex max-w-[80%] gap-4 items-center"
+												<li
+													class="flex w-full items-center gap-2 px-3 py-1 justify-between"
 												>
-													<img
-														class="h-5 w-5"
-														src={recipe.img}
-														alt="sword"
-													/>
-													<span class="truncate">
-														{recipe.name}
-														fsdfsdfsd fsd fsdf sd fsd
-														fsdfsdfsd fsd fsdsffsdfsdfsd
-														fsdfsdfsdf asda dassda das
-														fsdfsdfsd fsd fsdf sd fsd
-														fsdfsdfsd fsd fsdsffsdfsdfsd
-														fsdfsdfsdf asda dassda das
-														fsdfsdfsd fsd fsdf sd fsd
-														fsdfsdfsd fsd fsdsffsdfsdfsd
-														fsdfsdfsdf asda dassda das
-													</span>
-													<span
-														class="text-[0.5rem] whitespace-nowrap"
+													<div
+														class="flex max-w-[80%] gap-4 items-center"
 													>
-														x 100</span
-													>
-												</div>
-												<div>
-													<span
-														class="indicator-item indicator-end badge badge-sm badge-primary/60 text-[0.65rem] border-none"
-													>
-														2
-													</span>
-												</div>
-											</li>
-										</button>
-									{/each}
-								</div>
-							{/if}
-						</ul>
-					</div>
-				{/if}
-			{/each}
-		</div>
+														<img
+															class="h-5 w-5"
+															src={recipe.img}
+															alt="sword"
+														/>
+														<span class="truncate">
+															{recipe.name}
+															fsdfsdfsd fsd fsdf sd
+															fsd fsdfsdfsd fsd fsdsffsdfsdfsd
+															fsdfsdfsdf asda dassda
+															das fsdfsdfsd fsd fsdf
+															sd fsd fsdfsdfsd fsd
+															fsdsffsdfsdfsd fsdfsdfsdf
+															asda dassda das fsdfsdfsd
+															fsd fsdf sd fsd fsdfsdfsd
+															fsd fsdsffsdfsdfsd fsdfsdfsdf
+															asda dassda das
+														</span>
+														<span
+															class="text-[0.5rem] whitespace-nowrap"
+														>
+															x 100</span
+														>
+													</div>
+													<div>
+														<span
+															class="indicator-item indicator-end badge badge-sm badge-primary/60 text-[0.65rem] border-none"
+														>
+															2
+														</span>
+													</div>
+												</li>
+											</button>
+										{/each}
+									</div>
+								{/if}
+							</ul>
+						</div>
+					{/if}
+				{/each}
+			</div>
+		{/if}
 	</div>
 </main>

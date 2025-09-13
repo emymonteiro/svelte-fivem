@@ -1,8 +1,16 @@
 <script lang="ts">
 	import Icon from "@iconify/svelte";
 
-	const queue = [
-		{ id: 1, name: "Espada de aço", img: "espada_aço.webp", progress: 50 },
+	const queue: {
+		id: number;
+		name: string;
+		img: string;
+		progress?: number;
+	}[] = [
+		/* { id: 1, name: "Espada de aço", img: "espada_aço.webp", progress: 50 },
+		{ id: 2, name: "Espada de aço", img: "espada_aço.webp" },
+		{ id: 3, name: "Espada de aço", img: "espada_aço.webp" }, */
+		/* { id: 1, name: "Espada de aço", img: "espada_aço.webp", progress: 50 },
 		{
 			id: 2,
 			name: "Escudo de madeira",
@@ -25,81 +33,95 @@
 		{ id: 17, name: "Arco longo", img: "espada_aço.webp" },
 		{ id: 18, name: "Arco longo", img: "espada_aço.webp" },
 		{ id: 19, name: "Arco longo", img: "espada_aço.webp" },
-		{ id: 20, name: "Arco longo", img: "espada_aço.webp" },
+		{ id: 20, name: "Arco longo", img: "espada_aço.webp" }, */
 	];
 </script>
 
 <main class="flex flex-col max-w-sm h-full p-8 overflow-hidden">
-	<section class="flex flex-col w-full overflow-hidden">
+	<section class="flex flex-col h-full w-full overflow-hidden">
 		<ul
-			class="relative list bg-primary shadow-md border-x-2 border-secondary overflow-auto z-10"
+			class="relative h-full list bg-primary shadow-md border-x-2 border-secondary overflow-auto drop-shadow-xl drop-shadow-accent"
 		>
-			{#each queue as item (item.id)}
-				<div
-					class:sticky={item.progress !== undefined}
-					class:top-0={item.progress !== undefined}
-					class:bg-primary={item.progress !== undefined}
-					class:z-10={item.progress !== undefined}
+			{#if queue.length === 0}
+				<li
+					class="p-4 pb-2 text-xs tracking-wide opacity-60 italic text-center self-center justify-self-center h-full flex items-center"
 				>
-					{#if item.id === queue[0].id}
-						<li class="p-4 pb-2 text-xs tracking-wide">
-							Craftings em andamento
-						</li>
-					{/if}
-
-					<li class="list-row flex flex-col">
-						<div class="flex w-full justify-between items-center">
-							<div class="flex items-center gap-3">
-								<img class="size-8" src={item.img} alt="img" />
-								<div>{item.name}</div>
-							</div>
-							<div>
-								<button
-									class="btn btn-soft btn-primary btn-square btn-ghost"
-								>
-									<Icon
-										class="size-5"
-										icon="game-icons:trash-can"
-									/>
-								</button>
-							</div>
-						</div>
-						{#if item.progress !== undefined}
-							<progress
-								class="progress progress-secondary w-full"
-								value={item.progress}
-								max="100"
-							></progress>
-						{/if}
-					</li>
-				</div>
-			{/each}
-		</ul>
-		<div
-			class="sticky bottom-[0] p-4 bg-primary w-full drop-shadow-2md drop-shadow-highlight"
-		>
-			{#if queue[0]}
-				<div class="mb-2 text-[0.6rem] opacity-60 tracking-wide">
-					Craftando item: <strong
-						class="text-xs text-neutral-content text-shadow-md text-shadow-highlight"
-						>{queue[0].name}</strong
+					Nenhum crafting na fila
+				</li>
+			{:else}
+				{#each queue as item (item.id)}
+					<div
+						class={`${item.progress !== undefined ? "sticky top-0 bg-primary z-10 drop-shadow-xl/20 drop-shadow-highlight" : ""}`}
 					>
-				</div>
+						{#if item.id === queue[0].id}
+							<li class="p-4 pb-2 text-xs tracking-wide">
+								Craftings em andamento
+							</li>
+						{/if}
+
+						<li class="list-row flex flex-col">
+							<div
+								class="flex w-full justify-between items-center"
+							>
+								<div class="flex items-center gap-3 w-3/4">
+									<img
+										class="size-8"
+										src={item.img}
+										alt="img"
+									/>
+									<div class="truncate">{item.name}</div>
+								</div>
+								<div class="w-1/4">
+									<button
+										class="btn btn-soft btn-primary btn-square btn-ghost"
+									>
+										<Icon
+											class="size-5"
+											icon="game-icons:trash-can"
+										/>
+									</button>
+								</div>
+							</div>
+							{#if item.progress !== undefined}
+								<progress
+									class="progress progress-secondary w-full"
+									value={item.progress}
+									max="100"
+								></progress>
+							{/if}
+						</li>
+					</div>
+				{/each}
 			{/if}
-			<span
-				class="text-light text-[0.6rem] opacity-60 tracking-wide mb-2 block"
+		</ul>
+		{#if queue.length > 0}
+			<div
+				class="p-4 bg-primary w-full z-20 drop-shadow-2xl drop-shadow-highlight"
 			>
-				Processando {queue.length} item{queue.length !== 1 ? "s" : ""} na
-				fila
-			</span>
-			<button
-				class="btn btn-soft btn-primary m-0 p-1 text-accent text-[0.65rem] w-full"
-			>
-				<div class="flex justify-center items-center gap-1">
-					<kbd class="kbd kbd-xs">Q</kbd>
-					<span>Limpar fila</span>
-				</div>
-			</button>
-		</div>
+				{#if queue[0]}
+					<div class="mb-2 text-[0.6rem] opacity-60 tracking-wide">
+						Craftando item: <strong
+							class="text-xs text-white text-shadow-md text-shadow-highlight"
+							>{queue[0].name}</strong
+						>
+					</div>
+				{/if}
+				<span
+					class="text-light text-[0.6rem] opacity-60 tracking-wide mb-2 block"
+				>
+					Processando {queue.length} item{queue.length !== 1
+						? "s"
+						: ""} na fila
+				</span>
+				<button
+					class="btn btn-soft btn-primary m-0 p-1 text-accent text-[0.65rem] w-full"
+				>
+					<div class="flex justify-center items-center gap-1">
+						<kbd class="kbd kbd-xs">Q</kbd>
+						<span>Limpar fila</span>
+					</div>
+				</button>
+			</div>
+		{/if}
 	</section>
 </main>
