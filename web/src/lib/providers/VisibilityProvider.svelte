@@ -9,6 +9,12 @@
 			return _visibility;
 		},
 	};
+</script>
+
+<script lang="ts">
+	import { useNuiEvent } from "$lib/utils/useNuiEvent";
+	import { fetchNui } from "$lib/utils/fetchNui";
+	import { onMount } from "svelte";
 
 	useNuiEvent<boolean>(
 		"setVisible",
@@ -17,12 +23,6 @@
 		},
 		{ data: true },
 	);
-</script>
-
-<script lang="ts">
-	import { useNuiEvent } from "$lib/utils/useNuiEvent";
-	import { fetchNui } from "$lib/utils/fetchNui";
-	import { onMount, type Snippet } from "svelte";
 
 	let { children } = $props();
 	onMount(() => {

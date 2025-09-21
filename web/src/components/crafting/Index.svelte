@@ -21,7 +21,7 @@
 		<NavBar />
 
 		<div
-			class="flex w-full h-[calc(100%-4rem)] max-h-full flex-1 flex-row blur-none z-10 bg-base-200/60"
+			class="flex w-full h-[calc(100%-4rem)] max-h-full flex-1 flex-row justify-between blur-none z-10 bg-base-200/60"
 		>
 			<RecipesList />
 			<ItemCard />

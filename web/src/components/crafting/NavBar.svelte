@@ -32,13 +32,13 @@
 			</ul>
 		</div> -->
 
-		<a class="btn btn-ghost text-xl text-secondary">
+		<button class="btn btn-ghost text-xl text-secondary">
 			<img
 				class="h-12 mr-2 drop-shadow-md drop-shadow-highlight"
 				src="eclipse_logo.png"
 				alt="Logo"
 			/>
-		</a>
+		</button>
 	</div>
 	<div class="navbar-center lg:flex">
 		<!-- hidden -->

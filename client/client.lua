@@ -4,6 +4,12 @@ RegisterCommand('svelte:show', function()
     print("Svelte showing")
 end, false)
 
+RegisterCommand('svelte:hide', function()
+    SendNUI('setVisible', false)
+    SetNuiFocus(false, false)
+    print("Svelte hiding")
+end, false)
+
 RegisterNUICallback('getClientData', function(_, cb)
     local playerCoords = GetEntityCoords(PlayerPedId())
     cb({

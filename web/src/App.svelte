@@ -5,7 +5,7 @@
 
 <VisibilityProvider>
 	<main
-		data-theme="coffee"
+		data-theme="Eclipse"
 		class="w-full items-center justify-center flex bg-transparent"
 	>
 		<MainCrafting />
@@ -13,6 +13,7 @@
 </VisibilityProvider>
 
 <style>
+	@reference "tailwindcss";
 	main {
 		height: 100vh;
 	}
