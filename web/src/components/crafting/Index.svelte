@@ -16,12 +16,12 @@
 		/>
 	{/if}
 	<div
-		class="h-full w-full bg-white-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-100"
+		class="h-full w-full bg-accent-20 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-100"
 	>
 		<NavBar />
 
 		<div
-			class="flex w-full h-[calc(100%-4rem)] max-h-full flex-1 flex-row justify-between blur-none z-10 bg-base-200/60"
+			class="flex w-full h-[calc(100%-4rem)] max-h-full flex-1 flex-row justify-between blur-none z-10 bg-200-60"
 		>
 			<RecipesList />
 			<ItemCard />
@@ -29,3 +29,13 @@
 		</div>
 	</div>
 </main>
+
+<style>
+	.bg-accent-20 {
+		backdrop-filter: blur(8px);
+		background-color: rgba(248, 248, 248, 0.2);
+	}
+	.bg-200-60 {
+		background-color: rgba(11, 9, 8, 0.6);
+	}
+</style>

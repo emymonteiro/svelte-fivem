@@ -21,29 +21,29 @@
 
 @plugin "daisyui/theme" {
 	name: "Eclipse";
-	default: true;
+	default: false;
 	prefersdark: true;
 	color-scheme: "light";
-	--color-base-100: oklch(21% 0.006 56.043);
-	--color-base-200: oklch(14% 0.004 49.25);
+	--color-base-100: #1b1816;
+	--color-base-200: #0b0908;
 	--color-base-300: #bf2727;
 	--color-base-content: #e0dfda;
-	--color-primary: oklch(21% 0.006 56.043);
+	--color-primary: #1b1816;
 	--color-primary-content: #bf2727;
 	--color-secondary: #bd1c1f;
-	--color-secondary-content: oklch(21% 0.006 56.043);
-	--color-accent: oklch(98% 0.001 106.423);
-	--color-accent-content: oklch(38% 0.063 188.416);
+	--color-secondary-content: #1b1816;
+	--color-accent: #f8f8f8;
+	--color-accent-content: #084d49;
 	--color-neutral: #242323;
-	--color-neutral-content: oklch(92% 0.004 286.32);
-	--color-info: oklch(91% 0.08 205.041);
-	--color-info-content: oklch(29% 0.066 243.157);
-	--color-success: oklch(79% 0.209 151.711);
-	--color-success-content: oklch(37% 0.077 168.94);
-	--color-warning: oklch(92% 0.12 95.746);
-	--color-warning-content: oklch(41% 0.112 45.904);
-	--color-error: oklch(71% 0.194 13.428);
-	--color-error-content: oklch(27% 0.105 12.094);
+	--color-neutral-content: #e4e4e7;
+	--color-info: #a0f1fb;
+	--color-info-content: #042e49;
+	--color-success: #02df72;
+	--color-success-content: #004c39;
+	--color-warning: #fde484;
+	--color-warning-content: #793205;
+	--color-error: #ff637d;
+	--color-error-content: #4d0218;
 	--radius-selector: 0.5rem;
 	--radius-field: 0.25rem;
 	--radius-box: 1rem;
@@ -58,6 +58,24 @@
 	/* 	box-shadow: 0px 0px 17px 6px var(--color-highlight);
 	-webkit-box-shadow: 0px 0px 17px 6px var(--color-highlight); */
 	filter: drop-shadow(0 0 17px var(--color-highlight));
+}
+
+/* Remove background apenas dos elementos raiz, mantendo base-100 funcional */
+:root,
+html,
+body,
+[data-theme] {
+	background: transparent !important;
+}
+
+/* Garante que o container principal seja transparente */
+#app {
+	background: transparent !important;
+}
+
+/* Opcional: se houver algum elemento específico do DaisyUI aplicando fundo */
+body > iframe {
+	background: transparent !important;
 }
 
 * {

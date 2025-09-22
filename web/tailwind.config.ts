@@ -7,4 +7,14 @@ export default {
 		"./dist/index.html", // ← Alterado para dist/
 	],
 	plugins: [require("daisyui")],
+	theme: {
+		opacity: {
+			// Desabilita o color-mix com oklab
+			mode: "alpha",
+		},
+		// Ou configure para usar srgb especificamente
+		mix: {
+			mode: "srgb",
+		},
+	},
 } satisfies Config;

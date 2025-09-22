@@ -418,7 +418,7 @@
 									>
 										{#each recipes.filter((r) => r.category === category) as recipe}
 											<button
-												class="text-sm border-l-2 bg-primary/60 cursor-pointer hover:bg-primary/80 border-primary hover:border-secondary rounded-r-md w-full"
+												class="recipe-button text-sm border-l-2 cursor-pointer border-primary hover:border-secondary rounded-r-md w-full"
 											>
 												<li
 													class="flex w-full items-center gap-2 px-3 py-1 justify-between"
@@ -426,11 +426,13 @@
 													<div
 														class="flex max-w-[80%] gap-4 items-center"
 													>
-														<img
-															class="h-5 w-5"
-															src={recipe.img}
-															alt="sword"
-														/>
+														<div class="h-5 w-5">
+															<img
+																class="h-5 w-5"
+																src={recipe.img}
+																alt="sword"
+															/>
+														</div>
 														<span class="truncate">
 															{recipe.name}
 															fsdfsdfsd fsd fsdf sd
@@ -470,3 +472,12 @@
 		{/if}
 	</div>
 </main>
+
+<style>
+	.recipe-button {
+		background-color: rgba(27, 24, 22, 0.6);
+	}
+	.recipe-button:hover {
+		background-color: rgba(27, 24, 22, 0.8);
+	}
+</style>

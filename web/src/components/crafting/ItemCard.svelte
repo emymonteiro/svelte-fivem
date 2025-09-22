@@ -140,7 +140,7 @@
 							{#each item.requirements as req}
 								<li class="flex items-center gap-2">
 									<div
-										class="bg-base-200/40 w-7 h-7 p-1 rounded-md"
+										class="bg-base-200-40 w-7 h-7 p-1 rounded-md"
 									></div>
 									{req.name} - {req.value}
 								</li>
@@ -155,7 +155,7 @@
 							{#each item.ingredients as ingredient}
 								<li class="flex items-center gap-2">
 									<div
-										class="bg-base-200/40 w-7 h-7 p-1 rounded-md"
+										class="bg-base-200-40 w-7 h-7 p-1 rounded-md"
 									>
 										<img
 											src={ingredient.img}
@@ -201,3 +201,9 @@
 		</section>
 	{/if}
 </main>
+
+<style>
+	.bg-base-200-40 {
+		background-color: rgba(11, 9, 8, 0.4);
+	}
+</style>
